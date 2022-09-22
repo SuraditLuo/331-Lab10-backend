@@ -17,5 +17,4 @@ public class ParticipantEventHistoryDTO {
     String date;
     String time;
     Boolean petAllowed;
-    List<Participant> participants;
 }

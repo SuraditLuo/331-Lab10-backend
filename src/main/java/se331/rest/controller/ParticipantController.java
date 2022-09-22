@@ -13,6 +13,6 @@ public class ParticipantController {
     ParticipantService participantService;
     @GetMapping("/participants")
     ResponseEntity<?> getParticipants() {
-        return ResponseEntity.ok(LabMapper.INSTANCE.getParticipantDTO(participantService.getAllParticipant()));
+        return ResponseEntity.ok(LabMapper.INSTANCE.getParticipantDto(participantService.getAllParticipant()));
     }
 }
