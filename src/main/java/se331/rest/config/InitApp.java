@@ -111,7 +111,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(false)
                 .build());
         tempEvent.setOrganizer(org3);
-        org2.getOwnEvents().add(tempEvent);
+        org3.getOwnEvents().add(tempEvent);
         p4.getEventHistory().add(tempEvent);
         p2.getEventHistory().add(tempEvent);
         p5.getEventHistory().add(tempEvent);
