@@ -11,7 +11,7 @@ import se331.rest.entity.Organizer;
 import java.util.List;
 
 @Service
-public class OrganizerServiceImpl implements OrganizerSevice{
+public class OrganizerServiceImpl implements OrganizerService {
     @Autowired
     OrganizerDao organizerDao;
     @Override

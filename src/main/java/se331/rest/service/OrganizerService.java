@@ -5,7 +5,7 @@ import se331.rest.entity.Organizer;
 
 import java.util.List;
 
-public interface OrganizerSevice {
+public interface OrganizerService {
     List<Organizer> getAllOrganizer();
     Page<Organizer> getOrganizer(Integer page, Integer pageSize);
 }
