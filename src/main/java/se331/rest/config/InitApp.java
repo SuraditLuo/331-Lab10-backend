@@ -7,9 +7,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import se331.rest.entity.Event;
 import se331.rest.entity.Organizer;
+import se331.rest.entity.Participant;
 import se331.rest.repository.EventRepository;
 import se331.rest.repository.OrganizerRepository;
+import se331.rest.repository.ParticipantRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Component
@@ -18,6 +22,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     EventRepository eventRepository;
     @Autowired
     OrganizerRepository organizerRepository;
+    @Autowired
+    ParticipantRepository participantRepository;
     @Override
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
@@ -31,6 +37,27 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         org3 = organizerRepository.save(Organizer.builder()
                 .name("ChiangMai")
                 .build());
+        Participant p1, p2, p3, p4, p5;
+        p1 = participantRepository.save(Participant.builder()
+                .name("Leng")
+                .telNo("0810210999")
+                .build());
+        p2 = participantRepository.save(Participant.builder()
+                .name("Joe")
+                .telNo("0876254268")
+                .build());
+        p3 = participantRepository.save(Participant.builder()
+                .name("White")
+                .telNo("0935428962")
+                .build());
+        p4 = participantRepository.save(Participant.builder()
+                .name("Ball")
+                .telNo("0974542201")
+                .build());
+        p5 = participantRepository.save(Participant.builder()
+                .name("Jesse")
+                .telNo("0810365778")
+                .build());
         Event tempEvent;
         tempEvent = eventRepository.save(Event.builder()
                 .category("Academic")
@@ -43,6 +70,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
         tempEvent.setOrganizer(org1);
         org1.getOwnEvents().add(tempEvent);
+        p1.getEventHistory().add(tempEvent);
+        p4.getEventHistory().add(tempEvent);
+        p2.getEventHistory().add(tempEvent);
         tempEvent = eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Loy Krathong")
@@ -54,6 +84,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
         tempEvent.setOrganizer(org2);
         org2.getOwnEvents().add(tempEvent);
+        p3.getEventHistory().add(tempEvent);
+        p5.getEventHistory().add(tempEvent);
+        p4.getEventHistory().add(tempEvent);
         tempEvent = eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Songkran")
@@ -65,5 +98,23 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
         tempEvent.setOrganizer(org3);
         org3.getOwnEvents().add(tempEvent);
+        p5.getEventHistory().add(tempEvent);
+        p1.getEventHistory().add(tempEvent);
+        p2.getEventHistory().add(tempEvent);
+        tempEvent = eventRepository.save(Event.builder()
+                .category("Food")
+                .title("Eating Contest")
+                .description("Eat Big Get Big")
+                .location("A restaurant")
+                .date("3rd July")
+                .time("12.00 - 13.30pm")
+                .petAllowed(false)
+                .build());
+        tempEvent.setOrganizer(org3);
+        org2.getOwnEvents().add(tempEvent);
+        p4.getEventHistory().add(tempEvent);
+        p2.getEventHistory().add(tempEvent);
+        p5.getEventHistory().add(tempEvent);
+        p3.getEventHistory().add(tempEvent);
     }
 }
